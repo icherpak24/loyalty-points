@@ -187,6 +187,12 @@ CRUD-heavy domain on Postgres, I'd move the simple parts to Spring Data JDBC.
 (`WebApplicationType.NONE`) and reuses the same `LoyaltyService` bean. This costs about a second of
 start-up per command. In exchange there is one wiring path, so the CLI and API can't behave differently.
 
+### With more time
+- **Postgres + per-customer row locking** for concurrency across customers. 
+- **Transaction history endpoint** built on `lot_consumptions` ("why is my balance X?"), plus
+  "N points expiring on date D" in the balance response.
+- **Partial refunds**: claw back points in proportion to the refunded amount (needs a refunds table rather than `refunded_at`).
+
 ### Assumptions
 
 - Points are 1 per **whole** dollar, rounded down per purchase ($42.99 → 42 points). Purchases under $1
