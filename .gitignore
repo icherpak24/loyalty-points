@@ -1,0 +1,10 @@
+target/
+*.db
+*.db-shm
+*.db-wal
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store

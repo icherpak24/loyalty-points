@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+# Thin launcher so the CLI reads like the spec: ./points balance --user=alice
+DIR="$(cd "$(dirname "$0")" && pwd)"
+JAR="$DIR/target/loyalty-points.jar"
+if [ ! -f "$JAR" ]; then
+  echo "Jar not found. Build it first: ./mvnw package" >&2
+  exit 2
+fi
+exec java -jar "$JAR" "$@"
